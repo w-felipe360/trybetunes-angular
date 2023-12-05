@@ -1,5 +1,3 @@
-<div>
-    <p>search-page works!</p>
-    <input />
-</div>
 
+  <input [(ngModel)]="artist" placeholder="search for artists" type="text" />
+  <button (click)="searchAlbums(artist)">Search</button>
