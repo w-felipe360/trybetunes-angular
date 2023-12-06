@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { gettingSongsService } from '../services/songsApis/musicsAPI.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-music-card',

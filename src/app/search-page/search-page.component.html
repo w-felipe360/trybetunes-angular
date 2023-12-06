@@ -1,19 +1,19 @@
+<input class="search-input" [(ngModel)]="artist" placeholder="search for artists" type="text" />
+<button class="search-button" (click)="searchAlbums(artist)">Search</button>
 
-  <input [(ngModel)]="artist" placeholder="search for artists" type="text" />
-  <button (click)="searchAlbums(artist)">Search</button>
- 
-  <div *ngIf="albums.length > 0 && searchClicked">
-    <p>Resultado de álbuns de: {{ searchedArtist }}</p>
-  </div>
-  <ul>
-    <li *ngFor="let album of albums">
-      <a [routerLink]="['/album', album.collectionId]">
-        <img [src]="album.artworkUrl100" />
-        {{ album.collectionName }}
-      </a>
-    </li>
-  </ul>
+<div *ngIf="albums.length > 0 && searchClicked">
+  <p>Resultado de álbuns de: {{ searchedArtist }}</p>
+</div>
 
-  <div *ngIf="albums.length === 0 && searchClicked">
-    <p>No albums found.</p>
-  </div>
+<ul class="album-list">
+  <li *ngFor="let album of albums">
+    <a [routerLink]="['/album', album.collectionId]" class="album-link">
+      <img [src]="album.artworkUrl100" />
+      <p class="album-name">{{ album.collectionName }}</p>
+    </a>
+  </li>
+</ul>
+
+<div *ngIf="albums.length === 0 && searchClicked">
+  <p>No albums found.</p>
+</div>
