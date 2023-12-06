@@ -8,9 +8,16 @@ import { AlbumService } from '../services/songsApis/searchAlbunsAPI.service';
 })
 export class SearchPageComponent {
   artist: string = '';
+  searchedArtist = '';
+  albums: any[] = [];
+  searchClicked: boolean = false;
   constructor(private searchService: AlbumService) {}
   searchAlbums(artist: string) {
-    console.log('aqui o artist:', this.artist);
-    this.searchService.searchAlbumsAPI(artist).subscribe();
+    this.searchedArtist = artist;
+    this.searchClicked = true;
+    this.searchService.searchAlbumsAPI(artist).subscribe((data) => {
+      this.albums = data;
+    });
+    this.artist = '';
   }
 }
