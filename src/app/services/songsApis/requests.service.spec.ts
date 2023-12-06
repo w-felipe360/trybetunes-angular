@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RequestsService } from './requests.service';
+import { RequestsService } from './musicsAPI.service';
 
 describe('RequestsService', () => {
   let service: RequestsService;

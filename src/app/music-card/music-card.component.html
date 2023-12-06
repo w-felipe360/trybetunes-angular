@@ -1,0 +1,8 @@
+<div *ngFor="let album of displayedAlbums">
+    <img [src]="album.artworkUrl100" alt="{{ album.collectionName }}">
+    <p>{{ album.trackName }}</p>
+    <audio data-testid="audio-component" [src]="album.previewUrl" controls>
+      <track kind="captions" />
+      O seu navegador não suporta o elemento <code>audio</code>.
+    </audio>
+  </div>
