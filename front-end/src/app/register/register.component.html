@@ -1,0 +1,16 @@
+<div>
+  <form>
+    <label>Usuário</label>
+    <input type="text" #username (input)="(0)" />
+    <label> Senha </label>
+    <input type="password" #password (input)="(0)" />
+    <button
+      type="submit"
+      [disabled]="username.value.length < 3 || password.value.length < 3"
+      (click)="registerUser(username.value, password.value)"
+    >
+      Entrar
+    </button>
+  </form>
+  <button (click)="goToLogin()">Ir para Login</button>
+</div>

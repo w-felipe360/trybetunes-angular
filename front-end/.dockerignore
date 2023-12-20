@@ -1,0 +1,12 @@
+# Ignore files and directories
+.git
+node_modules
+dist
+tmp
+coverage
+
+# Ignore specific file types
+*.log
+*.tmp
+*.swp
+.DS_Store
