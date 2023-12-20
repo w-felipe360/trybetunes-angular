@@ -1,0 +1,26 @@
+button {
+  background-color: #f8f9fa;
+  border: none;
+  color: #495057;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button i {
+  margin-right: 5px;
+}
+.like-button:hover {
+    background-color: green;
+    color: white;
+  }
+  
+  .dislike-button:hover {
+    background-color: rgba(255, 0, 0, 0.694);
+    color: white;
+  }

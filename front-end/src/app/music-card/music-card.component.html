@@ -1,0 +1,16 @@
+<div *ngFor="let album of displayedAlbums">
+  <img [src]="album.artworkUrl100" alt="{{ album.collectionName }}" />
+  <p>{{ album.trackName }}</p>
+  <audio data-testid="audio-component" [src]="album.previewUrl" controls>
+    <track kind="captions" />
+    O seu navegador não suporta o elemento <code>audio</code>.
+  </audio>
+  <button class="like-button" (click)="onLike(album.trackId, userId)">
+    <i class="fas fa-thumbs-up"></i>
+    <span>{{ album.likes }}</span>
+  </button>
+  <button class="dislike-button" (click)="onDislike(album.trackId, userId)">
+    <i class="fas fa-thumbs-down"></i>
+    <span>{{ album.dislikes }}</span>
+  </button>
+</div>
