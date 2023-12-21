@@ -13,7 +13,7 @@ export class RegisterComponent {
   registerUser(username: string, password: string) {
     console.log(username);
     this.loginService.register(username, password).subscribe((res) => {
-      this.router.navigate(['/search']);
+      this.router.navigate(['/login']);
     });
   }
   goToLogin() {

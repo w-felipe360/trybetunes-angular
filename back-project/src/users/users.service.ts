@@ -4,6 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { EntityManager, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -17,10 +18,10 @@ export class UsersService {
     const user = new User(createUserDto);
     console.log(createUserDto.username);
     user.username = createUserDto.username;
-    user.password = createUserDto.password;
     user.description = null;
     user.image = null;
-    // Adicione mais campos aqui se necessário
+    const salt = await bcrypt.genSalt();
+    user.password = await bcrypt.hash(createUserDto.password, salt);
 
     this.usersRepository.insert(user);
     return { message: 'user added successfully' };
@@ -33,16 +34,12 @@ export class UsersService {
   async findOne(id: number) {
     return this.usersRepository.findOneBy({ id });
   }
-  async login(username: string, password: string) {
-    const user = await this.usersRepository.findOne({
-      where: {
-        username: username,
-        password: password,
-      },
-    });
-    if (!user) {
-      throw new UnauthorizedException('Invalid username or password');
-    }
+  async findByUsername(username: string) {
+    return this.usersRepository.findOneBy({ username });
+  }
+
+  async login(username: string) {
+    const user = await this.usersRepository.findOne({ where: { username } });
     return user;
   }
   async update(id: number, updateUserDto: UpdateUserDto) {
