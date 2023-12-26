@@ -4,13 +4,15 @@ import { LoginComponent } from './login/login.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { MusicCardComponent } from './music-card/music-card.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchPageComponent },
   { path: 'album/:id', component: MusicCardComponent },
-  { path: '', component: RegisterComponent },
-  // { path: '**', redirectTo: 'login' },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '', component: LoginComponent },
 ];
 
 @NgModule({

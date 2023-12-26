@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { EntityManager, Repository } from 'typeorm';
@@ -40,11 +40,14 @@ export class UsersService {
 
   async login(username: string) {
     const user = await this.usersRepository.findOne({ where: { username } });
+    console.log('user do service ->', user);
     return user;
   }
   async update(id: number, updateUserDto: UpdateUserDto) {
     const user = await this.usersRepository.findOneBy({ id });
+    user.username = updateUserDto.username;
     user.description = updateUserDto.description;
+    user.image = updateUserDto.image;
     await this.entityManager.save(user);
   }
 

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UserServicesService } from '../services/UserAPI/user-services.service';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import Swal from 'sweetalert2';
@@ -10,15 +9,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(
-    private userService: UserServicesService,
-    private router: Router,
-    private loginService: LoginService
-  ) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
   login(username: string, password: string) {
     this.loginService.login(username, password).subscribe({
-      next: () => {
+      next: (user) => {
+        // Save the user ID somewhere, e.g., in a UserService or AuthService
+        // console.log('id do user guardado?', user);
+        this.loginService.setUserId(user.id);
+        this.loginService.getUserId();
         this.router.navigate(['/search']);
       },
       error: () => {
@@ -29,5 +28,8 @@ export class LoginComponent {
         });
       },
     });
+  }
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

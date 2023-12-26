@@ -33,16 +33,18 @@ export class UsersController {
   @Post('login')
   @UsePipes(ValidateUserPasswordPipe)
   async login(@Body(new ValidationPipe()) loginUserDto: CreateUserDto) {
-    await this.usersService.login(loginUserDto.username);
-    return { message: 'login successful' };
+    const userData = await this.usersService.login(loginUserDto.username);
+    console.log(loginUserDto);
+
+    return { message: 'login successful', id: userData.id };
   }
 
-  @Get(':id')
+  @Get('/user/:id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);
   }
 
-  @Patch('user/edit')
+  @Patch('user/:id')
   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
