@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.header a {
+    display: flex;
+    color: #333;
+    text-decoration: none;
+}
+
+.header .logo {
+    max-height: 40px;
+}
+
+.header span {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.header .profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 1rem;
+    margin-right: 7px;
+}
+
+.header a:hover {
+    color: #666;
+}

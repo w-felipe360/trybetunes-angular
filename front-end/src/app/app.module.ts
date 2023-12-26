@@ -11,6 +11,9 @@ import { MusicCardComponent } from './music-card/music-card.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProfileComponent,
     RegisterComponent,
     ProfileComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
