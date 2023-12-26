@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
+  userId: number = 0;
   constructor(private httpClient: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
@@ -19,5 +20,16 @@ export class LoginService {
       username,
       password,
     });
+  }
+  setUserId(userId: number) {
+    console.log('oiiiiiiii', userId);
+    localStorage.setItem('userId', userId.toString());
+    console.log(localStorage.getItem('userId') + ' após a alteração.');
+  }
+
+  getUserId() {
+    const userId = localStorage.getItem('userId');
+    console.log('foi chamado o ', userId);
+    return Number(userId);
   }
 }

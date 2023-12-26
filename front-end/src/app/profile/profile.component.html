@@ -1,1 +1,22 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <h2>Profile</h2>
+    <img class="profile-image" [src]="user?.image" alt="User image">
+    <p><strong>Username:</strong> {{user?.username}}</p>
+    <p><strong>Description:</strong> {{user?.description}}</p>
+    <button class="edit-button" (click)="toggleEditMode()">Edit Profile</button>
+</div>
+<div *ngIf="editMode" class="modal">
+    <div class="modal-content">
+      <span class="close-button" (click)="toggleEditMode()">&times;</span>
+      <h2>Edit Profile</h2>
+      <form (ngSubmit)="onSubmit()">
+        <label for="username">Username:</label>
+        <input id="username" [(ngModel)]="user.username" name="username">
+        <label for="description">Description:</label>
+        <input id="description" [(ngModel)]="user.description" name="description">
+        <label for="image">Image URL:</label>
+        <input id="image" [(ngModel)]="user.image" name="image">
+        <button type="submit" class="save-button">Save Changes</button>
+      </form>
+    </div>
+  </div>

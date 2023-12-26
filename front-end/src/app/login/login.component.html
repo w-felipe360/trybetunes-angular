@@ -7,9 +7,10 @@
     <button
       type="submit"
       [disabled]="username.value.length < 3 || password.value.length < 3"
-      (click)="createUser(username.value, password.value)"
+      (click)="login(username.value, password.value)"
     >
       Entrar
     </button>
+    <button (click)="goToRegister()">Ir para Registro</button>
   </form>
 </div>

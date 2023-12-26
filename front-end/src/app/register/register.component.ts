@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../login/login.service'; // Substitua 'path-to-your-login-service' pelo caminho correto para o seu serviço de login
+import { LoginService } from '../login/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -11,9 +12,19 @@ export class RegisterComponent {
   constructor(private loginService: LoginService, private router: Router) {}
 
   registerUser(username: string, password: string) {
-    console.log(username);
-    this.loginService.register(username, password).subscribe((res) => {
-      this.router.navigate(['/search']);
+    this.loginService.register(username, password).subscribe({
+      next: (res) => {
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        if (error.status === 400 && error.error.message.includes('User already exists')) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'User already exists, please make login to proceed',
+          });
+        }
+      }
     });
   }
   goToLogin() {
