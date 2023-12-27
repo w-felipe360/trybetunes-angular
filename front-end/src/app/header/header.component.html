@@ -1,6 +1,6 @@
 <mat-toolbar class="header mat-elevation-z4">
     <span>
-        <a>
+        <a routerLink="/search">
             <img
                 src="https://logosmarcas.net/wp-content/uploads/2020/11/Apple-Music-Logo.png"
                 class="logo"
@@ -15,8 +15,9 @@
     </span>
     <div>
         <a routerLink="/profile">
-            <img class="profile" src="../../assets/profile.png" />
-            <p>User</p>
+            <img class="profile" src="{{user?.image}}" />
+            <p>{{user?.username}}</p> 
+            <!-- adicionar user dinâmico acima -->
         </a>
     </div>
 </mat-toolbar>

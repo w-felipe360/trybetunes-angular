@@ -19,7 +19,7 @@ export class UsersService {
     console.log(createUserDto.username);
     user.username = createUserDto.username;
     user.description = null;
-    user.image = null;
+    user.image = '../assets/profile.png';
     const salt = await bcrypt.genSalt();
     user.password = await bcrypt.hash(createUserDto.password, salt);
 
