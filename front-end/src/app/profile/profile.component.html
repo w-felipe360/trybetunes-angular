@@ -6,7 +6,9 @@
   <p><strong>Username:</strong> {{ user?.username }}</p>
   <p><strong>Description:</strong> {{ user?.description }}</p>
   <button class="edit-button" (click)="toggleEditMode()">Edit Profile</button>
+  <button class="logout-button" (click)="onLogout()">Logout</button>
 </div>
+
 <div *ngIf="editMode" class="modal">
   <div class="modal-content">
     <span class="close-button" (click)="toggleEditMode()">&times;</span>
