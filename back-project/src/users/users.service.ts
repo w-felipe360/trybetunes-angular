@@ -40,7 +40,7 @@ export class UsersService {
 
   async login(username: string) {
     const user = await this.usersRepository.findOne({ where: { username } });
-    console.log('user do service ->', user);
+    // console.log('user do service ->', user);
     return user;
   }
   async update(id: number, updateUserDto: UpdateUserDto) {
