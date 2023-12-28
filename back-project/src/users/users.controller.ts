@@ -6,17 +6,20 @@ import {
   Patch,
   Param,
   Delete,
-  ValidationPipe,
+  // ValidationPipe,
   UsePipes,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CheckUserInDbPipe } from './pipes/check-user-in-db.pipe';
-import { ValidateUserPasswordPipe } from './pipes/check-password.pipe';
+import { AuthGuard } from '@nestjs/passport';
+// import { ValidateUserPasswordPipe } from './pipes/check-password.pipe';
 // import { UserValidationPipe } from './user-validation.pipe';
 
 @Controller()
+@UseGuards(AuthGuard('jwt'))
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -31,10 +34,9 @@ export class UsersController {
     return this.usersService.findAll();
   }
   @Post('login')
-  @UsePipes(ValidateUserPasswordPipe)
-  async login(@Body(new ValidationPipe()) loginUserDto: CreateUserDto) {
+  async login(@Body() loginUserDto: CreateUserDto) {
     const userData = await this.usersService.login(loginUserDto.username);
-    console.log(loginUserDto);
+    // console.log(loginUserDto);
 
     return { message: 'login successful', id: userData.id };
   }
