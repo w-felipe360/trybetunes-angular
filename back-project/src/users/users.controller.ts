@@ -33,13 +33,13 @@ export class UsersController {
   findAll() {
     return this.usersService.findAll();
   }
-  @Post('login')
-  async login(@Body() loginUserDto: CreateUserDto) {
-    const userData = await this.usersService.login(loginUserDto.username);
-    // console.log(loginUserDto);
+  // @Post('login')
+  // async login(@Body() loginUserDto: CreateUserDto) {
+  //   const userData = await this.usersService.login(loginUserDto.username);
+  //   // console.log(loginUserDto);
 
-    return { message: 'login successful', id: userData.id };
-  }
+  //   return { message: 'login successful', id: userData.id };
+  // } não será mais necessária esta rota, pois o login será feito no auth.controller.ts
 
   @Get('/user/:id')
   findOne(@Param('id') id: string) {

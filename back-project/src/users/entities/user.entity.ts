@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import * as bcrypt from 'bcrypt';
+import { UserMusic } from 'src/music/entities/userMusic.entity';
 
 @Entity()
 export class User {
@@ -12,7 +20,13 @@ export class User {
   description: string;
   @Column({ nullable: true })
   image: string;
+  @OneToMany(() => UserMusic, (userMusic) => userMusic.id)
+  userMusics: UserMusic[];
 
+  @BeforeInsert()
+  hashPassword() {
+    this.password = bcrypt.hashSync(this.password, 10);
+  }
   constructor(user: Partial<User>) {
     Object.assign(this, user);
   }

@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  // OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { UserMusic } from './userMusic.entity';
 
 @Entity()
 export class Music {
@@ -13,6 +20,9 @@ export class Music {
 
   @Column()
   trackId: number;
+
+  @OneToMany(() => UserMusic, (userMusic) => userMusic.trackId)
+  userMusics: UserMusic[];
 
   constructor(music: Partial<Music>) {
     Object.assign(this, music);
