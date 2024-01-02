@@ -3,12 +3,27 @@ import { InjectRepository } from '@nestjs/typeorm';
 import axios from 'axios';
 import { Music } from './entities/music.entity';
 import { Repository } from 'typeorm';
+import { UserMusic } from './entities/userMusic.entity';
+import { User } from 'src/users/entities/user.entity';
+// import { Equal } from 'typeorm';
+import {
+  checkAPI,
+  createUserMusic,
+  findMusic,
+  findUserMusic,
+  toggleDislike,
+  toggleLike,
+} from './helpers/music.helper';
 
 @Injectable()
 export class MusicService {
   constructor(
     @InjectRepository(Music)
     private musicRepository: Repository<Music>,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+    @InjectRepository(UserMusic)
+    private userMusicRepository: Repository<UserMusic>,
   ) {}
   // create(createMusicDto: CreateMusicDto) {
   //   return 'This action adds a new music';
@@ -43,28 +58,44 @@ export class MusicService {
           };
         }),
       );
-      console.log(musics.slice(1).map((music) => music.trackName));
+      // console.log(musics.slice(1).map((music) => music.trackName));
       return musics;
     } catch (error) {
       console.error(error);
       throw error;
     }
   }
-  async likeMusic(trackId: number) {
-    let music = await this.musicRepository.findOne({ where: { trackId } });
-    if (!music) {
-      music = this.musicRepository.create({ trackId, likes: 0, dislikes: 0 });
+
+  async likeMusic(trackId: number, userId: number) {
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    checkAPI(trackId);
+    const music = await findMusic(trackId, this.musicRepository);
+
+    const existingUserMusic = await findUserMusic(
+      user.id,
+      music.id,
+      this.userMusicRepository,
+    );
+    if (existingUserMusic) {
+      await toggleLike(existingUserMusic, this.userMusicRepository);
+    } else {
+      await createUserMusic(user, music, this.userMusicRepository);
     }
-    music.likes++;
-    await this.musicRepository.save(music);
   }
 
-  async dislikeMusic(trackId: number) {
-    let music = await this.musicRepository.findOne({ where: { trackId } });
-    if (!music) {
-      music = this.musicRepository.create({ trackId, likes: 0, dislikes: 0 });
+  async dislikeMusic(trackId: number, userId: number) {
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    checkAPI(trackId);
+    const music = await findMusic(trackId, this.musicRepository);
+    const existingUserMusic = await findUserMusic(
+      user.id,
+      music.id,
+      this.userMusicRepository,
+    );
+    if (existingUserMusic) {
+      await toggleDislike(existingUserMusic, this.userMusicRepository);
+    } else {
+      await createUserMusic(user, music, this.userMusicRepository);
     }
-    music.dislikes++;
-    await this.musicRepository.save(music);
   }
 }
