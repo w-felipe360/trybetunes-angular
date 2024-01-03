@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { EntityManager, Repository } from 'typeorm';
+import { EntityManager, Equal, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
@@ -20,10 +20,20 @@ export class UsersService {
     user.username = createUserDto.username;
     user.description = null;
     user.image = '../assets/profile.png';
-    const salt = await bcrypt.genSalt();
-    user.password = await bcrypt.hash(createUserDto.password, salt);
 
-    this.usersRepository.insert(user);
+    // Use bcrypt.hashSync with a number representing the number of salt rounds
+    const saltRounds = 10;
+    user.password = bcrypt.hashSync(createUserDto.password, saltRounds);
+    console.log('senha crypto', user.password);
+    console.log('senha do usuário:', user.password);
+    this.usersRepository.save({
+      username: createUserDto.username,
+      password: user.password,
+      description: null,
+      image: '../assets/profile.png',
+    });
+    console.log(user);
+    console.log('a senha do user foi alterada??', user.password);
     return { message: 'user added successfully' };
   }
 
@@ -35,7 +45,10 @@ export class UsersService {
     return this.usersRepository.findOneBy({ id });
   }
   async findByUsername(username: string) {
-    return this.usersRepository.findOneBy({ username });
+    const oi = await this.usersRepository.findOne({
+      where: { username: Equal(username) },
+    });
+    return oi;
   }
 
   async login(username: string) {
