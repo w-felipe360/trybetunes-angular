@@ -71,5 +71,5 @@ export async function createUserMusic(
     trackId: music,
     liked: 1,
   });
-  await this.userMusicRepository.save(newUserMusic);
+  await userMusicRepository.save(newUserMusic);
 }

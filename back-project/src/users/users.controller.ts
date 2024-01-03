@@ -8,18 +8,19 @@ import {
   Delete,
   // ValidationPipe,
   UsePipes,
-  UseGuards,
+  // UseGuards,
+  // UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CheckUserInDbPipe } from './pipes/check-user-in-db.pipe';
-import { AuthGuard } from '@nestjs/passport';
+// import { AuthGuard } from '@nestjs/passport';
 // import { ValidateUserPasswordPipe } from './pipes/check-password.pipe';
 // import { UserValidationPipe } from './user-validation.pipe';
 
 @Controller()
-@UseGuards(AuthGuard('jwt'))
+// @UseGuards(AuthGuard('jwt'))
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
