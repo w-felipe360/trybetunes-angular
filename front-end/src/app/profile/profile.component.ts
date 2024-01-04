@@ -12,7 +12,11 @@ export class ProfileComponent implements OnInit {
   user: any;
   editMode = false;
 
-  constructor(private profileService: ProfileService, private router: Router) {}
+  constructor(
+    private profileService: ProfileService,
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.profileService.getUser().subscribe((user) => {
@@ -31,7 +35,7 @@ export class ProfileComponent implements OnInit {
     });
   }
   onLogout() {
-    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }
