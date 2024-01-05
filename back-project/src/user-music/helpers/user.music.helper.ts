@@ -11,6 +11,11 @@ export async function checkAPI(trackId: number) {
   if (!response.data.results.length) {
     throw new Error('Track not found in API');
   }
+  return {
+    trackName: response.data.results[0].trackName,
+    artworkUrl100: response.data.results[0].artworkUrl100,
+    previewUrl: response.data.results[0].previewUrl,
+  };
 }
 // async function findUser(userId: number) {
 //   return await this.userRepository.findOne({ where: { id: userId } });
@@ -18,6 +23,9 @@ export async function checkAPI(trackId: number) {
 
 export async function findMusic(
   trackId: number,
+  trackName: string,
+  artworkUrl100: string,
+  previewUrl: string,
   musicRepository: Repository<Music>,
 ) {
   let music = await musicRepository.findOne({
@@ -26,6 +34,9 @@ export async function findMusic(
   if (!music) {
     music = musicRepository.create({
       trackId,
+      trackName,
+      artworkUrl100,
+      previewUrl,
       likes: 0,
       dislikes: 0,
     });

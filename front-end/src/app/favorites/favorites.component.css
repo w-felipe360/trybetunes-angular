@@ -1,0 +1,19 @@
+.album {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.album img {
+    width: 100px;
+    height: 100px;
+}
+
+.album p {
+    flex-grow: 1;
+}
+
+.album audio {
+    flex-grow: 2;
+}
