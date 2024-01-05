@@ -21,8 +21,14 @@ export class UserMusicController {
     const userId = req.user.id;
     return await this.userMusicService.dislikeMusic(+trackId, userId);
   }
-  @Get(':userId/liked')
-  getLikedTracks(@Param('userId') userId: number) {
-    // return this.userMusicService.getLikedTracks(userId);
+
+  @Get('/user/favorites')
+  getLikedTracks(
+    // @Param('userId')
+    @Req()
+    req: RequestWithUser,
+  ) {
+    const userId = req.user.id;
+    return this.userMusicService.getLikedMusic(userId);
   }
 }

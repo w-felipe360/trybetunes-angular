@@ -21,6 +21,15 @@ export class Music {
   @Column()
   trackId: number;
 
+  @Column()
+  trackName: string;
+
+  @Column()
+  artworkUrl100: string;
+
+  @Column()
+  previewUrl: string;
+
   @OneToMany(() => UserMusic, (userMusic) => userMusic.trackId)
   userMusics: UserMusic[];
 

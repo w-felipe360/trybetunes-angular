@@ -1,0 +1,27 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class favoritesService {
+  constructor(private httpClient: HttpClient) {}
+
+  getFavoriteSongs() {
+    return this.httpClient.get(`http://localhost:3000/album/user/favorites`);
+  }
+  getMusicInfo(trackId: string) {
+    return this.httpClient.get(`http://localhost:3000/album/${trackId}`);
+  }
+
+  //   likeSong(songId: number) {
+  //     return this.httpClient.post(`http://localhost:3000/album/${songId}/like`, {
+  //       songId,
+  //     });
+  //   }
+  //   dislikeSong(songId: number ) {
+  //     return this.httpClient.post(`http://localhost:3000/album/${songId}/dislike`, {
+  //       songId,
+  //     });
+  //   }
+}
