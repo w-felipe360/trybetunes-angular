@@ -57,22 +57,6 @@ export async function findUserMusic(
     },
   });
 }
-
-export async function toggleLike(
-  userMusic: UserMusic,
-  userMusicRepository: Repository<UserMusic>,
-) {
-  userMusic.liked = userMusic.liked === 1 ? 0 : 1;
-  await userMusicRepository.save(userMusic);
-}
-
-export async function toggleDislike(
-  userMusic: UserMusic,
-  userMusicRepository: Repository<UserMusic>,
-) {
-  userMusic.liked = userMusic.liked === -1 ? 0 : -1;
-  await userMusicRepository.save(userMusic);
-}
 export async function createUserMusic(
   user: any,
   music: any,
@@ -81,7 +65,58 @@ export async function createUserMusic(
   const newUserMusic = userMusicRepository.create({
     userId: user,
     trackId: music,
-    liked: 1,
+    liked: 0,
   });
   await userMusicRepository.save(newUserMusic);
+  return newUserMusic;
+}
+export async function toggleLike(
+  music: Music,
+  musicRepository: Repository<Music>,
+  userMusic: UserMusic,
+  userMusicRepository: Repository<UserMusic>,
+) {
+  // console.log('valor inicial de liked', userMusic.liked);
+
+  if (userMusic.liked === -1 && music.dislikes > 0) {
+    music.dislikes--;
+    userMusic.liked = 0;
+  }
+  if (userMusic.liked === -1 && music.dislikes === 0) {
+    userMusic.liked = 0;
+  } else if (userMusic.liked === 1 && music.likes > 0) {
+    music.likes--;
+    userMusic.liked = 0;
+  } else if (userMusic.liked === 0) {
+    music.likes++;
+    userMusic.liked = 1;
+  }
+
+  await musicRepository.save(music); // Save the updated music entity
+  await userMusicRepository.save(userMusic);
+  console.log('musica abaixo', music, 'liked?', userMusic.liked);
+}
+
+export async function toggleDislike(
+  music: Music,
+  musicRepository: Repository<Music>,
+  userMusic: UserMusic,
+  userMusicRepository: Repository<UserMusic>,
+) {
+  if (userMusic.liked === 1 && music.likes > 0) {
+    music.likes--;
+    userMusic.liked = 0;
+  }
+  if (userMusic.liked === 1 && music.likes === 0) {
+    userMusic.liked = 0;
+  } else if (userMusic.liked === -1 && music.dislikes > 0) {
+    music.dislikes--;
+    userMusic.liked = 0;
+  } else if (userMusic.liked === 0) {
+    music.dislikes++;
+    userMusic.liked = -1;
+  }
+  await userMusicRepository.save(userMusic);
+  await musicRepository.save(music); // Save the updated music entity
+  console.log('musica abaixo', music, 'cade o liked?', userMusic.liked);
 }
