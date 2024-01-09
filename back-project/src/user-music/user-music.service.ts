@@ -40,16 +40,17 @@ export class UserMusicService {
       this.musicRepository,
     );
 
-    const existingUserMusic = await findUserMusic(
+    let userMusic = await findUserMusic(
       user.id,
       music.id,
       this.userMusicRepository,
     );
 
-    if (existingUserMusic) {
-      await toggleLike(existingUserMusic, this.userMusicRepository);
+    if (userMusic) {
+      return await toggleLike(music, this.musicRepository, userMusic, this.userMusicRepository);
     } else {
-      await createUserMusic(user, music, this.userMusicRepository);
+      userMusic = await createUserMusic(user, music, this.userMusicRepository);
+     return await toggleLike(music, this.musicRepository, userMusic, this.userMusicRepository);
     }
   }
 
@@ -64,15 +65,17 @@ export class UserMusicService {
       previewUrl,
       this.musicRepository,
     );
-    const existingUserMusic = await findUserMusic(
+let userMusic = await findUserMusic(
       user.id,
       music.id,
       this.userMusicRepository,
     );
-    if (existingUserMusic) {
-      await toggleDislike(existingUserMusic, this.userMusicRepository);
+
+    if (userMusic) {
+      return await toggleDislike(music, this.musicRepository, userMusic, this.userMusicRepository);
     } else {
-      await createUserMusic(user, artworkUrl100, previewUrl);
+      userMusic = await createUserMusic(user, music, this.userMusicRepository);
+     return await toggleDislike(music, this.musicRepository, userMusic, this.userMusicRepository);
     }
   }
   async getLikedMusic(userId: number) {
@@ -80,7 +83,7 @@ export class UserMusicService {
     return this.userMusicRepository.find({
       where: {
         userId: Equal(userId),
-        liked: 1,
+        liked: 0,
       },
       relations: ['trackId'], // replace 'track' with the name of the relation to the Music/Track entity
     });
