@@ -47,10 +47,10 @@ export class UserMusicService {
     );
 
     if (userMusic) {
-      await toggleLike(music, this.musicRepository, userMusic, this.userMusicRepository);
+      return await toggleLike(music, this.musicRepository, userMusic, this.userMusicRepository);
     } else {
       userMusic = await createUserMusic(user, music, this.userMusicRepository);
-      await toggleLike(music, this.musicRepository, userMusic, this.userMusicRepository);
+     return await toggleLike(music, this.musicRepository, userMusic, this.userMusicRepository);
     }
   }
 
@@ -72,10 +72,10 @@ let userMusic = await findUserMusic(
     );
 
     if (userMusic) {
-      await toggleDislike(music, this.musicRepository, userMusic, this.userMusicRepository);
+      return await toggleDislike(music, this.musicRepository, userMusic, this.userMusicRepository);
     } else {
       userMusic = await createUserMusic(user, music, this.userMusicRepository);
-      await toggleDislike(music, this.musicRepository, userMusic, this.userMusicRepository);
+     return await toggleDislike(music, this.musicRepository, userMusic, this.userMusicRepository);
     }
   }
   async getLikedMusic(userId: number) {

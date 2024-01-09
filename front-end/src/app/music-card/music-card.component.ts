@@ -3,6 +3,7 @@ import { gettingSongsService } from '../services/songsApis/musicsAPI.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/userService';
 import { MusicCardService } from './music-card.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-music-card',
@@ -28,6 +29,10 @@ export class MusicCardComponent implements OnInit {
     if (musicId) {
       this.getMusics(+musicId as number);
     }
+
+    this.musicService.musics$.subscribe((musics) => {
+      this.displayedAlbums = musics;
+    });
   }
 
   // getAlbums(search: string) {
@@ -37,28 +42,22 @@ export class MusicCardComponent implements OnInit {
   //   });
   // }
   getMusics(id: number) {
-    console.log('id ->', id);
-    const songs = this.musicService.getMusics(id);
-    console.log('songs ->', songs);
-    songs.subscribe((result: any) => {
-      console.log('aqui o resultado', result);
-      this.displayedAlbums = result.slice(1) as any[];
-      console.log('AQUI OS ALBUNS', this.displayedAlbums);
-    });
-    return songs;
+    this.musicService.getMusics(id);
   }
 
-  onLike(songId: number, userId: string) {
-    console.log(typeof songId, songId);
-    this.musicService.likeSong(songId).subscribe(() => {
-      const song = this.displayedAlbums.find(
-        (album) => album.trackId === songId
-      );
+  async onLike(songId: number) {
+    this.musicService.likeSong(songId).subscribe((response: any) => {
+      const song = this.displayedAlbums.find((song) => song.trackId === songId);
+      console.log(song);
+
       if (song) {
-        song.likes++;
+        console.log(response);
+        song.likes = response.likes;
+        song.dislikes = response.dislikes;
       }
     });
   }
+
   // incrementLikes(songId: number) {
   //   const song = this.displayedAlbums.find((song: any) => song.id === songId);
   //   if (song) {
@@ -66,14 +65,14 @@ export class MusicCardComponent implements OnInit {
   //   }
   // }
 
-  onDislike(songId: number, userId: string) {
-    console.log(typeof songId, songId);
-    this.musicService.dislikeSong(songId).subscribe(() => {
-      const song = this.displayedAlbums.find(
-        (album) => album.trackId === songId
-      );
+  onDislike(songId: number) {
+    this.musicService.dislikeSong(songId).subscribe((response: any) => {
+      const song = this.displayedAlbums.find((song) => song.trackId === songId);
+
       if (song) {
-        song.dislikes++;
+        console.log(response);
+        song.likes = response.likes;
+        song.dislikes = response.dislikes;
       }
     });
   }
