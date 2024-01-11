@@ -48,22 +48,13 @@ export class MusicCardComponent implements OnInit {
   async onLike(songId: number) {
     this.musicService.likeSong(songId).subscribe((response: any) => {
       const song = this.displayedAlbums.find((song) => song.trackId === songId);
-      console.log(song);
 
       if (song) {
-        console.log(response);
         song.likes = response.likes;
         song.dislikes = response.dislikes;
       }
     });
   }
-
-  // incrementLikes(songId: number) {
-  //   const song = this.displayedAlbums.find((song: any) => song.id === songId);
-  //   if (song) {
-  //     song.likes += 1;
-  //   }
-  // }
 
   onDislike(songId: number) {
     this.musicService.dislikeSong(songId).subscribe((response: any) => {

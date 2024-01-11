@@ -17,19 +17,6 @@ export class LoginComponent {
     private httpClient: HttpClient
   ) {}
 
-  // login(username: string, password: string) {
-  // console.log(username, password); username e password ok
-  // this.loginService.login(username, password).subscribe({
-  // next: (user) => {
-  // Save the user ID somewhere, e.g., in a UserService or AuthService
-  // console.log('id do user guardado?', user);
-  // this.loginService.setUserId(user.id);
-  // this.loginService.getUserId();
-  // },
-
-  // },
-  // });
-  // }
   login(username: string, password: string) {
     return this.httpClient
       .post('http://localhost:3000/auth/login', {
