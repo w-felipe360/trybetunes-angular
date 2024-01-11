@@ -23,8 +23,5 @@ Execute o seguinte comando na raiz do projeto:
 ```bash
 docker-compose up
 ```
-Isso instalará todas as dependências necessárias e iniciará automaticamente os servidores.
-
-# Configuração
-
-Apenas configure as variáveis de ambiente no arquivo `.env` do backend.
+- Isso instalará todas as dependências necessárias e iniciará automaticamente os servidores.
+- Em seguida, configure as variáveis de ambiente no arquivo `.env` do backend.
