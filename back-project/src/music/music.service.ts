@@ -18,12 +18,10 @@ export class MusicService {
       const response = await axios.get(getAlbumsAPI);
       return response.data; // Isso retornará os dados da resposta
     } catch (error) {
-      console.error(error);
       throw error;
     }
   }
   async getMusics(id: number) {
-    console.log(`getMusics called with id: ${id}`);
     const getMusicsAPI = `https://itunes.apple.com/lookup?id=${id}&entity=song`;
     try {
       const response = await axios.get(getMusicsAPI);
@@ -39,10 +37,8 @@ export class MusicService {
           };
         }),
       );
-      // console.log(musics.slice(1).map((music) => music.trackName));
       return musics;
     } catch (error) {
-      console.error(error);
       throw error;
     }
   }

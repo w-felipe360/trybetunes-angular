@@ -16,7 +16,6 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     const user = new User(createUserDto);
-    console.log(createUserDto.username);
     user.username = createUserDto.username;
     user.description = null;
     user.image = '../assets/profile.png';
@@ -24,16 +23,12 @@ export class UsersService {
     // Use bcrypt.hashSync with a number representing the number of salt rounds
     const saltRounds = 10;
     user.password = bcrypt.hashSync(createUserDto.password, saltRounds);
-    console.log('senha crypto', user.password);
-    console.log('senha do usuário:', user.password);
     this.usersRepository.save({
       username: createUserDto.username,
       password: user.password,
       description: null,
       image: '../assets/profile.png',
     });
-    console.log(user);
-    console.log('a senha do user foi alterada??', user.password);
     return { message: 'user added successfully' };
   }
 
@@ -53,7 +48,6 @@ export class UsersService {
 
   async login(username: string) {
     const user = await this.usersRepository.findOne({ where: { username } });
-    // console.log('user do service ->', user);
     return user;
   }
   async update(id: number, updateUserDto: UpdateUserDto) {

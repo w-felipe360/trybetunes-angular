@@ -76,8 +76,6 @@ export async function toggleLike(
   userMusic: UserMusic,
   userMusicRepository: Repository<UserMusic>,
 ) {
-  // console.log('valor inicial de liked', userMusic.liked);
-
   if (userMusic.liked === -1 && music.dislikes > 0) {
     music.dislikes--;
     userMusic.liked = 0;
@@ -94,7 +92,6 @@ export async function toggleLike(
 
   await musicRepository.save(music); // Save the updated music entity
   await userMusicRepository.save(userMusic);
-  console.log('musica abaixo', music, 'liked?', userMusic.liked);
   const { liked } = userMusic;
   return { ...music, liked };
 }
@@ -120,7 +117,6 @@ export async function toggleDislike(
   }
   await userMusicRepository.save(userMusic);
   await musicRepository.save(music); // Save the updated music entity
-  console.log('musica abaixo', music, 'cade o liked?', userMusic.liked);
   const { liked } = userMusic;
   return { ...music, liked };
 }

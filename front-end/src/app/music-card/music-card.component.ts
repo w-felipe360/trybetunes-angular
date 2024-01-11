@@ -34,13 +34,6 @@ export class MusicCardComponent implements OnInit {
       this.displayedAlbums = musics;
     });
   }
-
-  // getAlbums(search: string) {
-  //   const albuns = this.musicService.getAlbumsBySearch(search);
-  //   albuns.subscribe((result: Object) => {
-  //     this.displayedAlbums = result as any[];
-  //   });
-  // }
   getMusics(id: number) {
     this.musicService.getMusics(id);
   }
@@ -61,7 +54,6 @@ export class MusicCardComponent implements OnInit {
       const song = this.displayedAlbums.find((song) => song.trackId === songId);
 
       if (song) {
-        console.log(response);
         song.likes = response.likes;
         song.dislikes = response.dislikes;
       }

@@ -26,7 +26,6 @@ export class gettingSongsService {
   }
 
   public dislikeSong(id: string, userId: string): Observable<any> {
-    console.log('user', userId);
     return this.http.post(`http://localhost:3000/album/${id}/dislike`, {
       userId,
     });
