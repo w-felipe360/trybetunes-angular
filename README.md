@@ -9,7 +9,7 @@ Este projeto é uma aplicação fullstack de música que permite aos usuários c
 - Visualização de faixas da API do iTunes
 - Curtir e descurtir faixas
 - Armazenamento local de faixas curtidas
-- Integração com TypeORM para o banco de dados
+- Integração com TypeORM para o banco de dados mysql
 - Utilização do Axios para comunicação com a API
 
 ## Pré-requisitos
