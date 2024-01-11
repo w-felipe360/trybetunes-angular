@@ -1,22 +1,29 @@
-version: '3.5'
+version: '3.8'
 services:
   nest:
     build:
-      context: .
+      context: ./back-project
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
     depends_on:
       - mysql
     volumes:
-      - .:/app
+      - ./back-project:/app
   mysql:
     image: mysql
     env_file:
-      - .env
+      - ./back-project/.env
     ports:
       - '3306:3306'
     volumes:
       - mysql-data:/var/lib/mysql
+  app:
+    image: angular-app
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
 volumes:
   mysql-data:

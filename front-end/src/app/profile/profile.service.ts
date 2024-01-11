@@ -11,11 +11,9 @@ export class ProfileService {
 
  getUser(): Observable<any> {
     const id = this.loginService.getUserId(); // Get user ID from LoginService
-    console.log(id);
     return this.http.get(`http://localhost:3000/user/${id}`);
   }
   editUser(user: any): Observable<any> {
-    console.log('editUser aqui ->', user);
     const id = this.loginService.getUserId(); // Get user ID from LoginService
     return this.http.patch(`http://localhost:3000/user/${id}`, user);
   }
