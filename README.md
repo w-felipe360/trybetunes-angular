@@ -1,4 +1,4 @@
-# Projeto de Música Fullstack com Angular e NestJS
+# Trybetunes FULLSTACK
 
 ## Descrição
 
