@@ -24,3 +24,7 @@ button i {
     background-color: rgba(255, 0, 0, 0.694);
     color: white;
   }
+  .like-button-active {
+    background-color: green;
+    color: white;
+  }

@@ -95,6 +95,8 @@ export async function toggleLike(
   await musicRepository.save(music); // Save the updated music entity
   await userMusicRepository.save(userMusic);
   console.log('musica abaixo', music, 'liked?', userMusic.liked);
+  const { liked } = userMusic;
+  return { ...music, liked };
 }
 
 export async function toggleDislike(
@@ -119,4 +121,6 @@ export async function toggleDislike(
   await userMusicRepository.save(userMusic);
   await musicRepository.save(music); // Save the updated music entity
   console.log('musica abaixo', music, 'cade o liked?', userMusic.liked);
+  const { liked } = userMusic;
+  return { ...music, liked };
 }

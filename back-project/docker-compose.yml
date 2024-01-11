@@ -1,7 +1,22 @@
+version: '3.5'
 services:
+  nest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
   mysql:
     image: mysql
     env_file:
       - .env
     ports:
       - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:

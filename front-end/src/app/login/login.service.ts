@@ -14,7 +14,6 @@ export class LoginService {
   ) {}
 
   login(username: string, password: string): Observable<any> {
-    console.log(username, password);
     return this.httpClient.post('http://localhost:3000/auth/login', {
       username,
       password,
@@ -26,11 +25,6 @@ export class LoginService {
       password,
     });
   }
-  // setUserId(userId: number) {
-  //   console.log('oiiiiiiii', userId);
-  //   localStorage.setItem('userId', userId.toString());
-  //   console.log(localStorage.getItem('userId') + ' após a alteração.');
-  // }
 
   token() {
     return localStorage.getItem('token');
@@ -42,7 +36,6 @@ export class LoginService {
       return null;
     }
     const decodedToken = this.jwtHelper.decodeToken(token);
-    console.log('ID do usuário:', decodedToken.sub);
     return Number(decodedToken.sub);
   }
 }
