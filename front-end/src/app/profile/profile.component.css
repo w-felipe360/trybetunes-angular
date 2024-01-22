@@ -1,93 +1,96 @@
 .profile-container,
 .edit-container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .profile-container {
-    margin-left: 20px
+  /* margin-left: 34px; */
+  word-wrap: break-word;
+  display: flexbox;
+  align-items: center;
 }
 .profile-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .edit-button,
 .save-button {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .edit-button:hover,
 .save-button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 form label {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 form input {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 .modal {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-  }
-  
-  .modal-content {
-background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  .close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close-button:hover,
-  .close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 .logout-button {
-    background-color: #dc3545; /* Cor de fundo */
-    color: white; /* Cor do texto */
-    padding: 10px 20px; /* Espaçamento interno */
-    border: none; /* Sem borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão quando passar o mouse */
-    margin-top: 20px; /* Espaço acima do botão para colocá-lo embaixo */
-    display: block; /* Faz o botão ocupar toda a linha */
+  background-color: #dc3545; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de mão quando passar o mouse */
+  margin-top: 20px; /* Espaço acima do botão para colocá-lo embaixo */
+  display: block; /* Faz o botão ocupar toda a linha */
 }
 
 .logout-button:hover {
-    background-color: #c82333; /* Cor de fundo quando passar o mouse */
+  background-color: #c82333; /* Cor de fundo quando passar o mouse */
 }

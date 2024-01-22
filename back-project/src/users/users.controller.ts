@@ -15,12 +15,9 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CheckUserInDbPipe } from './pipes/check-user-in-db.pipe';
-// import { AuthGuard } from '@nestjs/passport';
-// import { ValidateUserPasswordPipe } from './pipes/check-password.pipe';
-// import { UserValidationPipe } from './user-validation.pipe';
+import { ConflictException } from '@nestjs/common';
 
 @Controller()
-// @UseGuards(AuthGuard('jwt'))
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -41,7 +38,11 @@ export class UsersController {
 
   @Patch('user/:id')
   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+    try {
+      return await this.usersService.update(+id, updateUserDto);
+    } catch (error) {
+      throw new ConflictException('This user already exists.');
+    }
   }
 
   @Delete(':id')

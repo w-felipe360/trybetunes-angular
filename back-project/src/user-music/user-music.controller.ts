@@ -24,7 +24,6 @@ export class UserMusicController {
 
   @Get('/user/favorites')
   getLikedTracks(
-    // @Param('userId')
     @Req()
     req: RequestWithUser,
   ) {

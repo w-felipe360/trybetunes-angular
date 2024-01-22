@@ -17,6 +17,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { TrendingComponent } from './trending/trending.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     ProfileComponent,
     HeaderComponent,
     FavoritesComponent,
+    TrendingComponent,
   ],
   // ...
 
@@ -37,8 +43,12 @@ import { FavoritesComponent } from './favorites/favorites.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    NgApexchartsModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

@@ -42,4 +42,7 @@ export class MusicService {
       throw error;
     }
   }
+  async findAll() {
+    return this.musicRepository.find();
+  }
 }

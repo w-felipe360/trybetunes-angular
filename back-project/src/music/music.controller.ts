@@ -11,6 +11,10 @@ export class MusicController {
   searchAlbuns(@Query('name') name: string) {
     return this.musicService.searchAlbuns(name);
   }
+  @Get()
+  findAllAlbuns() {
+    return this.musicService.findAll();
+  }
   @Get(':id')
   getMusics(@Param('id') id: string) {
     return this.musicService.getMusics(+id);

@@ -102,9 +102,9 @@ export class UserMusicService {
     return this.userMusicRepository.find({
       where: {
         userId: Equal(userId),
-        liked: 0,
+        liked: 1,
       },
-      relations: ['trackId'], // replace 'track' with the name of the relation to the Music/Track entity
+      relations: ['trackId']
     });
   }
 }
