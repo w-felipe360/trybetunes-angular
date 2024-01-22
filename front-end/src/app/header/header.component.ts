@@ -8,11 +8,13 @@ import { ProfileService } from '../profile/profile.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-  user: any;
-  constructor(private readonly profileService: ProfileService) {}
+  user: any  
+  constructor(private readonly profileService: ProfileService) {
+  }
   ngOnInit() {
     this.profileService.getUser().subscribe((user) => {
       this.user = user;
+      console.log(this.user)
     });
   }
 }

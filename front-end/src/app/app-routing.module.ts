@@ -5,8 +5,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { MusicCardComponent } from './music-card/music-card.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HeaderComponent } from './header/header.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { TrendingComponent } from './trending/trending.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: '', component: LoginComponent },
   { path: 'favorites', component: FavoritesComponent },
+  { path: 'trending', component: TrendingComponent },
 ];
 
 @NgModule({

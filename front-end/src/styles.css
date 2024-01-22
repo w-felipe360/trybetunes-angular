@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+/* .custom-snackbar {
+    color: white;
+  } */
+  /* .custom-snackbar  {
+    margin-right: 12px;
+    background: none;
+    color: rgba(29, 145, 19, 0.632);
+    border: none;
+  } */
+/* 
+  .custom-snackbar .mat-simple-snackbar-action {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+  } */
+  body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a[mat-button] {
+  cursor: pointer;
+}

@@ -27,4 +27,8 @@ button i {
   .like-button-active {
     background-color: green;
     color: white;
+  }  
+  .dislike-button-active {
+    background-color: red;
+    color: white;
   }

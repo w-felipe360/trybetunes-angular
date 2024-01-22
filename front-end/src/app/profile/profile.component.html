@@ -15,15 +15,16 @@
     <h2>Edit Profile</h2>
     <form (ngSubmit)="onSubmit()">
       <label for="username">Username:</label>
-      <input id="username" [(ngModel)]="user.username" name="username" />
+      <input id="username" [(ngModel)]="editUser.username" name="username" />
       <label for="description">Description:</label>
       <input
         id="description"
-        [(ngModel)]="user.description"
+        [(ngModel)]="editUser.description"
         name="description"
       />
       <label for="image">Image URL:</label>
-      <input id="image" [(ngModel)]="user.image" name="image" />
+      <input id="image" [(ngModel)]="editUser.image"
+        name="image" />
       <button type="submit" class="save-button">Save Changes</button>
     </form>
   </div>

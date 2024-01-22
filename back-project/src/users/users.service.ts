@@ -51,6 +51,15 @@ export class UsersService {
     return user;
   }
   async update(id: number, updateUserDto: UpdateUserDto) {
+    // Check if the new username already exists
+    const existingUser = await this.usersRepository.findOne({
+      where: { username: Equal(updateUserDto.username) },
+    });
+
+    if (existingUser && existingUser.id !== id) {
+      throw new Error('Username already exists');
+    }
+
     const user = await this.usersRepository.findOneBy({ id });
     user.username = updateUserDto.username;
     user.description = updateUserDto.description;

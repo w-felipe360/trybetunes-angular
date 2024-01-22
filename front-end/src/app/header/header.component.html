@@ -1,23 +1,40 @@
 <mat-toolbar class="header mat-elevation-z4">
-    <span>
-        <a routerLink="/search">
-            <img
-                src="https://logosmarcas.net/wp-content/uploads/2020/11/Apple-Music-Logo.png"
-                class="logo"
-            />
-        </a>
-    </span>
-    <span>
-        <a routerLink="/search">Search</a>
-    </span>
-    <span>
-        <a routerLink="/favorites">Favorites</a>
-    </span>
-    <div>
-        <a routerLink="/profile">
-            <img class="profile" src="{{user?.image}}" />
-            <p>{{user?.username}}</p> 
-            <!-- adicionar user dinâmico acima -->
-        </a>
-    </div>
+  <span>
+    <a routerLink="/search">
+      <img
+        src="https://logosmarcas.net/wp-content/uploads/2020/11/Apple-Music-Logo.png"
+        class="logo"
+      />
+    </a>
+  </span>
+  <span>
+    <a routerLink="/search" style="display: flex; align-items: center">
+      <mat-icon style="padding-right: 3px">search</mat-icon>
+      Search
+    </a>
+  </span>
+  <span>
+    <a routerLink="/favorites" style="display: flex; align-items: center"> 
+        <mat-icon style="padding-right: 3px">thumb_up</mat-icon>
+        Favorites
+    </a>
+  </span>
+  <span>
+    <a routerLink="/trending" style="display: flex; align-items: center">
+        <mat-icon style="padding-right: 4px">trending_up</mat-icon>
+        Trending
+    </a>
+  </span>
+  <div>
+    <a mat-button [matMenuTriggerFor]="userMenu">
+      <img class="profile" src="{{ user?.image }}" />
+      <p>{{ user?.username }}</p>
+    </a>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon>settings</mat-icon>
+        Settings
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
