@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { gettingSongsService } from '../services/songsApis/musicsAPI.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../services/userService';
 import { MusicCardService } from './music-card.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-music-card',
@@ -14,13 +11,10 @@ export class MusicCardComponent implements OnInit {
   userId!: string;
   likes: number = 0;
   dislikes: number = 0;
-  // albums: any[] = [];
   displayedAlbums: any[] = [];
 
   constructor(
-    private songServices: gettingSongsService,
     private route: ActivatedRoute,
-    private userService: UserService,
     private musicService: MusicCardService
   ) {}
 

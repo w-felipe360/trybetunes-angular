@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { gettingSongsService } from './services/songsApis/musicsAPI.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,7 @@ import { gettingSongsService } from './services/songsApis/musicsAPI.service';
 })
 export class AppComponent {
   title = 'learningAngular';
-  constructor(private gettingSongsService: gettingSongsService) {}
+  constructor() {}
 
   // onLike(songId: string, userId: string) {
   //   this.gettingSongsService.likeSong(songId, userId).subscribe();
