@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AlbumService } from '../services/songsApis/searchAlbunsAPI.service';
 import { MusicCardService } from '../music-card/music-card.service';
 
 @Component({

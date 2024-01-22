@@ -13,15 +13,15 @@ export class RegisterComponent {
 
   registerUser(username: string, password: string) {
     this.loginService.register(username, password).subscribe({
-      next: (res) => {
+      next: () => {
         this.router.navigate(['/login']);
       },
       error: (error) => {
-        if (error.status === 400 && error.error.message.includes('User already exists')) {
+        if (error) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'User already exists, please make login to proceed',
+            text: error.error.message,
           });
         }
       }

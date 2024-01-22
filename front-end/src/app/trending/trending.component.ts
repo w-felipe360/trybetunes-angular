@@ -51,7 +51,6 @@ export class TrendingComponent  {
   }
   loadMusics() {
     this.getMusics().subscribe((result) => {
-      console.log(result); // Add logging here
       const sortedData = result.sort((a: any, b: any) => b.likes - a.likes);
       this.trendingAlbuns = sortedData.slice(0, 5);
       this.chartOptions.series =  this.trendingAlbuns.map(

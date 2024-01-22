@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
     if (this.editMode) {
       this.editUser = null;
     } else {
-      this.editUser = { ...this.user }; // Make a copy of the user
+      this.editUser = { ...this.user };
     }
     this.editMode = !this.editMode;
   }
