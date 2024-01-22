@@ -2,11 +2,11 @@
 
 ## Descrição
 
-Este projeto é uma aplicação fullstack de música que permite aos usuários curtir e descurtir faixas obtidas da API do iTunes. As faixas curtidas são salvas localmente para uma experiência personalizada. O projeto utiliza Angular no frontend e NestJS no backend.
+Este projeto é uma aplicação fullstack de música que permite aos usuários curtir e descurtir faixas obtidas da API do Apple Music. As faixas curtidas são salvas localmente para uma experiência personalizada. O projeto utiliza Angular no frontend e NestJS no backend.
 
 ## Funcionalidades
 
-- Visualização de faixas da API do iTunes
+- Visualização de faixas da API do Apple Music
 - Curtir e descurtir faixas
 - Armazenamento local de faixas curtidas
 - Integração com TypeORM para o banco de dados mysql
