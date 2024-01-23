@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MusicCardService } from './music-card.service';
+import { favoritesService } from '../favorites/favorites.service';
 
 @Component({
   selector: 'app-music-card',
@@ -12,6 +13,7 @@ export class MusicCardComponent implements OnInit {
   likes: number = 0;
   dislikes: number = 0;
   displayedAlbums: any[] = [];
+  favoriteSongs: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -23,9 +25,21 @@ export class MusicCardComponent implements OnInit {
     if (musicId) {
       this.getMusics(+musicId as number);
     }
-
+    const songs = this.musicService.getAllRelations();
+    songs.subscribe((result: any) => {
+      this.favoriteSongs = result as any[];
+    });
     this.musicService.musics$.subscribe((musics) => {
-      this.displayedAlbums = musics;
+      this.displayedAlbums = musics.map((music: any) => {
+        const favoriteSong = this.favoriteSongs.find(
+          (song: any) => song.trackId.trackId === music.trackId
+        );
+        if (favoriteSong) {
+          music.liked = favoriteSong.liked;
+        }
+
+        return music;
+      });
     });
   }
   getMusics(id: number) {
@@ -39,6 +53,7 @@ export class MusicCardComponent implements OnInit {
       if (song) {
         song.likes = response.likes;
         song.dislikes = response.dislikes;
+        song.liked = response.liked;
       }
     });
   }
@@ -50,6 +65,7 @@ export class MusicCardComponent implements OnInit {
       if (song) {
         song.likes = response.likes;
         song.dislikes = response.dislikes;
+        song.liked = response.liked;
       }
     });
   }

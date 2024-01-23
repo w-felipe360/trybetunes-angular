@@ -28,6 +28,16 @@ export class UserMusicService {
   //   return 'This action adds a new music';
   // }
 
+  async findAll(userId: number) {
+    const oi = await this.userMusicRepository.find({
+      where: { userId: Equal(userId) },
+      relations: ['trackId'],
+    });
+    console.log(oi);
+
+    return oi;
+  }
+
   async likeMusic(trackId: number, userId: number) {
     const { trackName, artworkUrl100, previewUrl } = await checkAPI(trackId);
     const user = await this.userRepository.findOne({ where: { id: userId } });
@@ -104,7 +114,7 @@ export class UserMusicService {
         userId: Equal(userId),
         liked: 1,
       },
-      relations: ['trackId']
+      relations: ['trackId'],
     });
   }
 }
