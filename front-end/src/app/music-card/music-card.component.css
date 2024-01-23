@@ -24,11 +24,17 @@ button i {
     background-color: rgba(255, 0, 0, 0.694);
     color: white;
   }
-  .like-button-active {
-    background-color: green;
-    color: white;
-  }  
-  .dislike-button-active {
-    background-color: red;
-    color: white;
-  }
+.like-button-active {
+  background-color: green;
+  color: white;
+}
+
+.dislike-button-active {
+  background-color: red;
+  color: white;
+}
+
+.button-default {
+  background-color: #f8f9fa;
+  color: #495057;
+}

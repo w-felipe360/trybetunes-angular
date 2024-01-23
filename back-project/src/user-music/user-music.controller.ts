@@ -22,6 +22,16 @@ export class UserMusicController {
     return await this.userMusicService.dislikeMusic(+trackId, userId);
   }
 
+  @Get('/:id/relations')
+  async getUsers(
+    @Req()
+    req: RequestWithUser,
+  ) {
+    const userId = req.user.id;
+    return this.userMusicService.findAll(userId);
+  }
+  
+
   @Get('/user/favorites')
   getLikedTracks(
     @Req()
@@ -30,4 +40,5 @@ export class UserMusicController {
     const userId = req.user.id;
     return this.userMusicService.getLikedMusic(userId);
   }
+
 }

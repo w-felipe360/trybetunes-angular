@@ -23,6 +23,9 @@ export class MusicCardService {
       });
   }
 
+  getAllRelations() {
+    return this.httpClient.get(`http://localhost:3000/album/user/relations`);
+  }
   getAll(): Observable<any> {
     return this.httpClient.get('http://localhost:3000/album/').pipe(
       tap((result: any) => {
