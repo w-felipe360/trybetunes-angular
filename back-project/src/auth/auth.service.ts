@@ -24,7 +24,6 @@ export class AuthService {
     } catch (error) {
       return null;
     }
-    // problema está na comparação de senhas.
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return null;
