@@ -2,7 +2,6 @@ import {
   Column,
   Entity,
   OneToMany,
-  // OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserMusic } from './userMusic.entity';
@@ -10,7 +9,7 @@ import { UserMusic } from './userMusic.entity';
 @Entity()
 export class Music {
   @PrimaryGeneratedColumn()
-  id: number; // Este é o ID gerado pelo banco de dados
+  id: number;
 
   @Column({ default: 0 })
   likes: number;

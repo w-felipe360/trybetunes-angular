@@ -17,9 +17,6 @@ export async function checkAPI(trackId: number) {
     previewUrl: response.data.results[0].previewUrl,
   };
 }
-// async function findUser(userId: number) {
-//   return await this.userRepository.findOne({ where: { id: userId } });
-// }
 
 export async function findMusic(
   trackId: number,
@@ -90,7 +87,7 @@ export async function toggleLike(
     userMusic.liked = 1;
   }
 
-  await musicRepository.save(music); // Save the updated music entity
+  await musicRepository.save(music);
   await userMusicRepository.save(userMusic);
   const { liked } = userMusic;
   return { ...music, liked };
@@ -116,7 +113,7 @@ export async function toggleDislike(
     userMusic.liked = -1;
   }
   await userMusicRepository.save(userMusic);
-  await musicRepository.save(music); // Save the updated music entity
+  await musicRepository.save(music);
   const { liked } = userMusic;
   return { ...music, liked };
 }

@@ -11,10 +11,7 @@ export class SearchPageComponent {
   searchedArtist = '';
   albums: any[] = [];
   searchClicked: boolean = false;
-  constructor(
-    // private searchService: AlbumService,
-    private musicService: MusicCardService
-  ) {}
+  constructor(private musicService: MusicCardService) {}
   searchAlbums(artist: string) {
     this.searchedArtist = artist;
     this.searchClicked = true;

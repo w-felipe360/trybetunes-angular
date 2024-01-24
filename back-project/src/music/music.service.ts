@@ -16,7 +16,7 @@ export class MusicService {
     const getAlbumsAPI = `https://itunes.apple.com/search?entity=album&term=${artistNameURL}&attribute=allArtistTerm`;
     try {
       const response = await axios.get(getAlbumsAPI);
-      return response.data; // Isso retornará os dados da resposta
+      return response.data;
     } catch (error) {
       throw error;
     }

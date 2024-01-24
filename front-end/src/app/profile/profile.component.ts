@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from './profile.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar'; // import MatSnackBar here
+import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -13,7 +13,7 @@ import { throwError } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
   user: any;
-  editUser: any; // Add this line
+  editUser: any;
   editMode = false;
 
   constructor(

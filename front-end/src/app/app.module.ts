@@ -36,7 +36,6 @@ import { MatIconModule } from '@angular/material/icon';
     FavoritesComponent,
     TrendingComponent,
   ],
-  // ...
 
   imports: [
     BrowserModule,

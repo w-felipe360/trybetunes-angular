@@ -24,6 +24,8 @@ services:
       context: ./front-end
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "4200:4200"
+    volumes:
+      - ./front-end:/app
 volumes:
   mysql-data:

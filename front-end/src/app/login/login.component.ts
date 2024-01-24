@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
-// import * as jwt_decode from 'jsonwebtoken';
 
 @Component({
   selector: 'app-login',
