@@ -24,17 +24,12 @@ export class UserMusicService {
     @InjectRepository(UserMusic)
     private userMusicRepository: Repository<UserMusic>,
   ) {}
-  // create(createMusicDto: CreateMusicDto) {
-  //   return 'This action adds a new music';
-  // }
 
   async findAll(userId: number) {
     const oi = await this.userMusicRepository.find({
       where: { userId: Equal(userId) },
       relations: ['trackId'],
     });
-    console.log(oi);
-
     return oi;
   }
 

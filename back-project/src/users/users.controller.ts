@@ -6,10 +6,7 @@ import {
   Patch,
   Param,
   Delete,
-  // ValidationPipe,
   UsePipes,
-  // UseGuards,
-  // UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';

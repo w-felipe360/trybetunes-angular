@@ -13,15 +13,4 @@ export class favoritesService {
   getMusicInfo(trackId: string) {
     return this.httpClient.get(`http://localhost:3000/album/${trackId}`);
   }
-
-  //   likeSong(songId: number) {
-  //     return this.httpClient.post(`http://localhost:3000/album/${songId}/like`, {
-  //       songId,
-  //     });
-  //   }
-  //   dislikeSong(songId: number ) {
-  //     return this.httpClient.post(`http://localhost:3000/album/${songId}/dislike`, {
-  //       songId,
-  //     });
-  //   }
 }

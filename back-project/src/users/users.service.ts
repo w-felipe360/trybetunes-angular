@@ -20,7 +20,6 @@ export class UsersService {
     user.description = null;
     user.image = '../assets/profile.png';
 
-    // Use bcrypt.hashSync with a number representing the number of salt rounds
     const saltRounds = 10;
     user.password = bcrypt.hashSync(createUserDto.password, saltRounds);
     this.usersRepository.save({
@@ -51,7 +50,6 @@ export class UsersService {
     return user;
   }
   async update(id: number, updateUserDto: UpdateUserDto) {
-    // Check if the new username already exists
     const existingUser = await this.usersRepository.findOne({
       where: { username: Equal(updateUserDto.username) },
     });
