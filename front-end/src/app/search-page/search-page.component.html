@@ -2,7 +2,7 @@
 <input class="search-input" [(ngModel)]="artist" placeholder="search for artists" type="text" (keyup.enter)="searchAlbums(artist)" />
 <button class="search-button" (click)="searchAlbums(artist)">Search</button>
 
-<div *ngIf="albums.length > 0 && searchClicked">
+<div class="results" *ngIf="albums.length > 0 && searchClicked">
   <p>Resultado de álbuns de: {{ searchedArtist }}</p>
 </div>
 
@@ -15,6 +15,6 @@
   </li>
 </ul>
 
-<div *ngIf="albums.length === 0 && searchClicked">
+<div class="results" *ngIf="albums.length === 0 && searchClicked">
   <p>No albums found.</p>
 </div>
