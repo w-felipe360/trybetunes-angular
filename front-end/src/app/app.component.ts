@@ -8,12 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'learningAngular';
   constructor() {}
-
-  // onLike(songId: string, userId: string) {
-  //   this.gettingSongsService.likeSong(songId, userId).subscribe();
-  // }
-
-  // onDislike(songId: string, userId: string) {
-  //   this.gettingSongsService.dislikeSong(songId, userId).subscribe();
-  // }
 }
