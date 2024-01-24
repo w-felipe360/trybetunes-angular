@@ -55,3 +55,8 @@ button:not(:disabled):hover {
   background-color: transparent;
   cursor: pointer;
 }
+
+.logo {
+  width: 40%;
+  padding-right:40px
+}
